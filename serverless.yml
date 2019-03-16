@@ -1,0 +1,32 @@
+service: auth-get-token
+
+provider:
+  name: aws
+  runtime: go1.x
+  profile: ralisoft
+  deploymentBucket: 
+    name: clutterfinder-serverless-${self:provider.stage}-${self:provider.region}
+  apiGateway: 
+    restApiId: ov76ienq4j
+    restApiRootResourceId: vzt44gldr6
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'us-east-1'}
+  tracing:
+    lambda: true
+  environment:
+    variable1: value1
+
+
+package:
+ exclude:
+   - ./**
+ include:
+   - ./bin/**
+
+functions:
+  token:
+    handler: bin/token
+    events:
+    - http:
+        path: auth/token
+        method: post
