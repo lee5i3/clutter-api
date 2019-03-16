@@ -1,5 +1,5 @@
 package auth
 
-func getToken() string {
+func GetToken() string {
 	return "test"
 }
