@@ -1,0 +1,31 @@
+{
+  "name": "clutterfinder-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon -L ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lee5i3/clutterfinder-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lee5i3/clutterfinder-api/issues"
+  },
+  "homepage": "https://github.com/lee5i3/clutterfinder-api#readme",
+  "dependencies": {
+    "config": "3.0.1",
+    "express": "4.16.4",
+    "js-yaml": "3.12.2",
+    "morgan": "1.9.1",
+    "winston": "3.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "1.18.10"
+  }
+}
