@@ -1,18 +1,21 @@
-FROM node:10-slim
+FROM heroku/heroku:18-build as build
 
-# Create app directory
-WORKDIR /usr/src/app
+COPY . /app
+WORKDIR /app
 
-# Install app dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-# where available (npm@5+)
-COPY package*.json ./
+# Setup buildpack
+RUN mkdir -p /tmp/buildpack/heroku/go /tmp/build_cache /tmp/env
+RUN curl https://codon-buildpacks.s3.amazonaws.com/buildpacks/heroku/go.tgz | tar xz -C /tmp/buildpack/heroku/go
 
-RUN npm install
-# If you are building your code for production
-# RUN npm ci --only=production
+#Execute Buildpack
+RUN STACK=heroku-18 /tmp/buildpack/heroku/go/bin/compile /app /tmp/build_cache /tmp/env
 
-# Bundle app source
-COPY . .
+# Prepare final, minimal image
+FROM heroku/heroku:18
 
-CMD [ "npm", "start" ]
+COPY --from=build /app /app
+ENV HOME /app
+WORKDIR /app
+RUN useradd -m heroku
+USER heroku
+CMD /app/bin/go-getting-started
