@@ -1,12 +1,9 @@
 {
-  "name": "Start on Heroku: Go",
-  "description": "Go Getting Started Example App",
+  "name": "Clutterfinder API",
+  "description": "API for connecting to Clutterfinder",
   "keywords": [
-    "getting-started",
-    "go",
-    "sample",
-    "example"
+    "go"
   ],
-  "website": "http://github.com/heroku/go-getting-started",
-  "repository": "http://github.com/heroku/go-getting-started"
+  "website": "http://github.com/lee5i3/clutter-api",
+  "repository": "http://github.com/lee5i3/clutter-api"
 }
