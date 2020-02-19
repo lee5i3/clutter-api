@@ -5,6 +5,8 @@ import (
 	"log"
 	"net/http"
 	"os"
+
+	"github.com/joho/godotenv"
 )
 
 func homePage(w http.ResponseWriter, r *http.Request) {
@@ -28,5 +30,10 @@ func handleRequests() {
 }
 
 func main() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+
 	handleRequests()
 }
