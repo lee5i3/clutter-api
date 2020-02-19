@@ -23,7 +23,7 @@ func handleRequests() {
 	}
 
 	http.HandleFunc("/", homePage)
-	fmt.Println("Listening...")
+	fmt.Println("Listening....")
 	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", port), nil))
 }
 
